@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="data">
+    <h1 class="text">Formulario de registro</h1>
+  </div>
+  <form formGroup="formProduct">
+
+    <div class="folderAsigment">
+      <div class="text-field" >
+        <label for="idProduct">Id</label>
+        <input id="idProduct"  [disabled]="formProduct.get('idProduct')!.disabled"  formControlName="idProduct" type="text">
+        <div *ngIf="formProduct.get('idProduct')?.hasError('required')" class="error">
+          Este campo es requerido.
+        </div>
+        <div *ngIf="formProduct.get('idProduct')?.hasError('minlength')" class="error">
+          El ID debe tener al menos 3 caracteres.
+        </div>
+        <div *ngIf="formProduct.get('idProduct')?.hasError('idExists') && !formProduct.get('idProduct')!.disabled" class="error">
+          El ID ya existe. Por favor, elige otro.
+        </div>
+      </div>
+
+      <div class="text-field">
+        <label for="name">Name</label>
+        <input id="name" formControlName="name" type="text">
+        <div *ngIf="formProduct.get('name')?.hasError('required')" class="error">
+          Este campo es requerido.
+        </div>
+      </div>
+    </div>
+
+    <div class="folderAsigment">
+      <div class="text-field">
+        <label for="description">Description</label>
+        <input id="description" formControlName="description" type="text">
+        <div *ngIf="formProduct.get('description')?.hasError('required')" class="error">
+          Este campo es requerido.
+        </div>
+      </div>
+
+      <div class="text-field">
+        <label for="logo">Logo</label>
+        <input id="logo" formControlName="logo" type="text">
+        <div *ngIf="formProduct.get('logo')?.hasError('required')" class="error">
+          Este campo es requerido.
+        </div>
+      </div>
+    </div>
+
+    <div class="folderAsigment">
+      <div class="text-field">
+        <label for="date_release">Fecha Liberación</label>
+        <input type="date" id="date_release" [min]="formatDate(registerDate)" formControlName="date_release"
+          (change)="dateChange($event)">
+        <div class="error" *ngIf="formProduct.get('date_release')?.hasError('required')">
+          Este campo es requerido.
+        </div>
+      </div>
+      <div class="text-field">
+        <label for="date_revision">Fecha Revisión</label>
+        <input type="date" id="date_revision" [min]="formatDate(minDate)" [max]="formatDate(maxDate)" formControlName="date_revision"
+          [disabled]="formProduct.get('date_revision')!.disabled">
+        <div class="error" *ngIf="formProduct.get('date_revision')?.hasError('required')">
+          Este campo es requerido.
+        </div>
+      </div>
+
+    </div>
+    <div class="button-container">
+      <button class="button cancel-button" (click)="back()">Volver</button>
+      <button class="button cancel-button" (click)="resetForm()">Restablecer</button>
+      <button class="button accept-button" (click)="saveOrUpdateProduct()">Aceptar</button>
+    </div>
+  </form>
+</div>

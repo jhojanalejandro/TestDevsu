@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="d-flex">
+    <input type="text" (keyup)="applyFilter($event)" placeholder="Buscar" #input [autocomplete]="'off'" class="search-input">
+    <button class="btn-add-product" (click)="saveOptions('0')">Add Product</button>
+  </div>
+
+  <div class="table">
+    <table>
+      <thead>
+        <tr>
+          <th *ngFor="let column of columnas">{{ column.title }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let element of paginatedData">
+          <td *ngFor="let columna of columnas">
+            <ng-container [ngSwitch]="columna.name">
+              <span *ngSwitchCase="'logo'">
+                <img class="w-2 h-2" [src]="element.logo" width="50" height="50">
+              </span>
+              <p *ngSwitchCase="'name'">
+                {{ element[columna.name] }}
+              </p>
+              <p *ngSwitchCase="'description'">
+                {{ element[columna.name] }}
+              </p>
+              <p *ngSwitchCase="'date_release'">
+                {{ element.date_release | date:'dd/MM/yyyy' }}
+              </p>
+              <p *ngSwitchCase="'date_revision'">
+                {{ element.date_revision | date:'dd/MM/yyyy' }}
+              </p>
+              <div *ngSwitchCase="'action'">
+                <button class="dots-button" (click)="toggleMenu(element.id)">⋮</button>
+                <div class="menu" *ngIf="selectedId === element.id">
+                  <button class="menu-button" (click)="saveOptions(element.id)">
+                    <span class="icon edit-icon"></span> Editar
+                  </button>
+                  <button class="menu-button" (click)="confirmDelete(element.id)">
+                    <span class="icon delete-icon"></span> Eliminar
+                  </button>
+                </div>
+              </div>
+            </ng-container>
+          </td>
+
+        </tr>
+        <tr *ngIf="paginatedData.length === 0">
+          <td >No hay datos para filtrar "{{ input.value }}"</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pagination">
+    <button (click)="previousPage()" [disabled]="currentPage === 0">Previous</button>
+    <span>Page {{ currentPage + 1 }} of {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages - 1">Next</button>
+    <select (change)="onPageSizeChange($event)">
+      <option *ngFor="let size of pageSizeOptions" [value]="size">{{ size }}</option>
+    </select>
+    <span>Total Records: {{ totalRecords }}</span>
+  </div>
+</div>

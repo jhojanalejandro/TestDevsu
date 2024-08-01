@@ -1,0 +1,216 @@
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 15px;
+  margin-top: 15px;
+
+  @media (min-width: 576px) {
+    max-width: 540px;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 720px;
+  }
+
+  @media (min-width: 992px) {
+    max-width: 960px;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 1140px;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 1140px;
+  }
+}
+
+.container {
+  width: 100%;
+  margin: 15px auto;
+  padding: 15px;
+  max-width: 1200px;
+}
+
+.d-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.table table {
+  width: 100%;
+  border-spacing: 0;
+}
+
+.table th, .table td {
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.table img {
+  max-width: 50px;
+  max-height: 50px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2em;
+  background-color: white;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+.dots-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.dots-button:focus {
+  outline: none;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border: 1px solid #ccc;
+  position: absolute;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  padding: 8px;
+}
+
+.menu-button {
+  border: none;
+  background: none;
+  padding: 8px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.menu-button:hover {
+  background-color: #f1f1f1;
+}
+
+.icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  position: relative;
+}
+
+.edit-icon::before {
+  content: '';
+  width: 12px;
+  height: 2px;
+  background: black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  border-radius: 1px;
+}
+
+.edit-icon::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border: 2px solid black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  border-radius: 1px;
+}
+
+.delete-icon::before, .delete-icon::after {
+  content: '';
+  width: 12px;
+  height: 2px;
+  background: black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 1px;
+}
+
+.delete-icon::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.delete-icon::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+
+.btn-add-product {
+  background-color: #ffeb3b; /* Amarillo */
+  color: #000; /* Texto en negro */
+  border: none; /* Sin borde */
+  padding: 10px 20px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados */
+  font-size: 16px; /* Tamaño de la fuente */
+  cursor: pointer; /* Cambio de cursor al pasar sobre el botón */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Efectos de transición */
+}
+
+.btn-add-product:hover {
+  background-color: #fdd835; /* Amarillo más oscuro en hover */
+  transform: scale(1.05); /* Efecto de escala en hover */
+}
+
+.btn-add-product:active {
+  background-color: #fbc02d; /* Amarillo aún más oscuro cuando se presiona */
+}
+
+
+.search-input {
+  border: 2px solid #ddd; /* Borde gris claro */
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 10px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño de la fuente */
+  width: 100%; /* Ocupa el ancho completo del contenedor */
+  max-width: 400px; /* Ancho máximo del campo */
+  box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+  outline: none; /* Quita el contorno al hacer clic */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves para el borde y la sombra */
+}
+
+.search-input::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+.search-input:focus {
+  border-color: #ffeb3b;
+  box-shadow: 0 0 5px rgba(255, 235, 59, 0.5);
+}
+
+.search-input:hover {
+  border-color: #ccc; /* Color del borde al pasar el cursor */
+}
